@@ -17,6 +17,15 @@ def save_user(user):
 	'''
 	User.save_user(user)
 
+def verify_user(firstname,lastname,password):
+	'''
+	Function that verifies the existence of the user before creating user credentials
+	'''
+	verify_user = Credential.check_user(firstname,lastname,password)
+	return verify_user
+
+
+
 
 
 
