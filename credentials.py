@@ -1,3 +1,4 @@
+import pyperclip
 import string
 # from user import User
 
@@ -44,19 +45,19 @@ class Credential:
 	# 	'''
 	# 	Method to generate an 8 character password for a user 
 	# 	'''
-	# 	user_password=''.join(random.choice(char) for _ in range(size))
+	# 	user_password = ''.join(random.choice(char) for _ in range(size))
 	# 	return user_password
 
-	# @classmethod
-	# def display_credentials(cls,user_name):
-	# 	'''
-	# 	Class method to display the list of credentials saved
-	# 	'''
-	# 	user_credentials_list = []
-	# 	for credential in cls.credentials_list:
-	# 		if credential.user_name == user_name:
-	# 			user_credentials_list.append(credential)
-	# 	return user_credentials_list
+	@classmethod
+	def display_credentials(cls,user_name):
+		'''
+		Class method to display the list of credentials saved
+		'''
+		user_credentials_list = []
+		for credential in cls.credentials_list:
+			if credential.user_name == user_name:
+				user_credentials_list.append(credential)
+		return user_credentials_list
 				
 
 	
