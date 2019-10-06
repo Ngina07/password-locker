@@ -75,7 +75,25 @@ class TestCredentials(unittest.TestCase):
 		self.new_credential.save_credentials()
 		twitter = Credential('Harlem','Twitter','Harlemy','Harlem1234')
 		twitter.save_credentials()
-		self.assertEqual(len(Credential.credentials_list),2)
+		self.assertEqual(len(Credential.credentials_list),4)
+
+	# def test_generate_password(self):
+	# 	'''
+	# 	Test to check if new password is being generated
+	# 	'''
+	# 	self.twitter = Credential ('Twitter', 'Harlem', '')
+	# 	self.twitter.password = generate_password ()
+	# 	self.assertEqual()
+
+	def test_display_credentials(self):
+		'''
+		Test to check if credentials are displayed
+		'''
+		self.new_credential.save_credentials()
+		twitter = Credential ('Phillis','Twitter', 'Philly', 'philly1234')
+		twitter.save_credentials()
+		self.assertEqual(len(Credential.display_credentials(twitter.user_name)),1)
+
 
 if __name__ == '__main__':
     unittest.main()
