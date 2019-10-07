@@ -1,6 +1,6 @@
 import pyperclip
 import string
-# from user import User
+from user import User
 
 class Credential:
 	'''
@@ -12,14 +12,14 @@ class Credential:
 	user_credentials_list = []
 
 	@classmethod
-	def check_user(cls,first_name,password):
+	def check_user(cls,firstname,password):
 		'''
 		Method that checks if the name and password entered match entries saved in the users_list
 		'''
 		current_user = ''
 		for user in User.users_list:
-			if (user.first_name == first_name and user.password == password):
-				current_user = user.first_name
+			if (user.firstname == firstname and user.password == password):
+				current_user = user.firstname
 		return current_user
 
 	def __init__(self,user_name,site_name,account_name,password):
