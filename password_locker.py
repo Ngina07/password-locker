@@ -193,79 +193,111 @@ def main():
 						 else:
 							 if leave == "N":
 								 continue
-						 	
-						 						 	  
+	 if short_code == "2":
+			 print("")
+			 print("Log in ")
+			 print("Enter your username")
+			 username = input()
+			 print("Enter password")
+			 password1 = input()
 
+			 if username != user_name or password1 != password:
+				 print("Please enter correct account details!")
 
-							 
-						
+				 continue
+			 else:
+				 print(f"Welcome to your password locker account {username}.")
+				 print(" ")
+				 print(" ")
+				
 
+				 while True:
+					 print("\n AD- Add credential \n VW- View existing credentials \n RM- Delete credential \n EX- Exit application")
+					 
+					 option = input()
 
+					 if option == 'AD':
+						 while True:
+							 print ("Continue to add account (Y-Yes/ N- No)")
+							 addacc = input()
+							 if addacc == "Y":
+								 
+								 print ("Enter Account name")
+								 accountname = input()
+								 print ("Enter user name")
+								 accuser = input()
+								 print ( "Enter password")
+								 print("Would you like a computer generated password?(Y/N)")
+								 accpassword = input()
+								 if accpassword == "Y":
+								 	 accpassword = random.randint(9, 30000)
+								 	 print (" ")
+								 	 print (f"Account:{accountname} username: {accuser} password: {accpassword}")
+								 elif accpassword == "N":
+								 	 print ("Create password")
+								 	 accpassword = input ()
+								 	 print (f"Account:{accountname} username: {accuser} password: {accpassword}")
+									#  print ("_" * 69 )	
+								 
+								 save_credential(create_credential(accountname, accuser, accpassword))
+							 elif addacc == "N":
+								 break
+							 else:
+								 print ("Invalid choice")
+					 elif option == "VW":
+						 while True:
+							#  print ("Here are your credentials:")
+							 if display_credentials (user_name):
+								 for credential in display_credentials(user_name):
+									 print ("Here are your credentials:")
+									 print (f"Account : {credential.account} username: {credential.userName} password: {credential.password}")
 
+									 print ("=" * 69 )
 
+							 else:
+								 print ("Your credential list is empty")
+								 
+							 print ("To go back to main menu - menu, to exit- Ex ")
 
+							 back = input()
+							 if back == "menu":
+								 break
+							 elif back == "Ex":
+								 continue
+							 else:
+								 print("Enter valid option!")
 
+					 elif option == "RM":
+						 print ("What account would you like to delete?")
+						 credname = input()
+						 if check_credentials(credname):
+							 deletecred = find_credentials(credname)
+							 print ("Are you sure you want to delete credential? (Y-Yes N-No)")
+							 delete = input()
+							 if delete == 'Y':
+								 delete_credentials(deletecred)
+								 print("Credential has been removed from list")
+								 break
+							 elif delete == 'N':
+								 continue
+						 else:
+							 print("Credential not found")
 
+					 elif option == "EX":
+						 print("Are you sure you want to leave password locker? Y-Yes/ N-No")
 
+						 leave = input ()
+						 if leave == "Y":
+							 print("Successfully exited!")
+							 break
 
-							 	 
-							     
+						 else:
+							 if leave == "N":
+								 continue	  
 
-
-
-			# print('******Hey there, welcome to password locker***** I would like to: \n 1-Create an Account \n 2-Log In \n 3-Exit')
-			# short_code = input().lower().strip()
-			# if short_code == "1":
-			# 	print("Enter username")
-			# 	user_name = input()
-			# 	while True:
-			# 		print(" TP - To type your own password:\n GP - To generate random Password")
-			# 		short_code = input().lower().strip()
-			# 		if selected_choice  == 'tp':
-			# 		# password = input("Input your password")
-			# 		# break
-			# 	elif selected_choice == "gp":
-			# 		password = generate_password(password)
-			# 		break
-			# 	else: 
-			# 		print("Password error")
-			# 		save_user(create_user(first_name,last_name,password))
-			# 		print(" ")
-			# 		print(f"New Account Created for: {first_name} {last_name}  password: {password}")
-			# 		print("-"*69)
-
-			# elif short_code == '2':
-			# 		print("-"*60)
-			# 		print(' ')
-			# 		print('To login, enter your account details:')
-			# 		firstname = input('Enter your first name - ').strip()
-			# 		password = str(input('Enter your password - '))
-			# 		login = login_user(user_name,password)
-			# 		if login_user == login:
-			# 			print(" ")	
-			# 			print(f'Welcome {firstname}.')
-			# 			print(' ')
-			# while True
-			# 			print(" CR - to create new credentials: \n DC to Display credentials: \n RM- Delete credentials: \n CP- Copy credentials to clipboard")	
-			# 			short_code = input().lower().strip()
-			# 			if short_code == "cr":
-			# 				print("create new credentials")
-			# 				print("account name....")
-			# 				account = input().lower().strip()
-			# 				print("Your account username")
-			# 				userName = input()
-			# 				while True:
-			# 					print(" TP - To type your own pasword if you already have an account:\n GP - To generate random Password")
-			# 					password_Choice = input().lower().strip()
-			# 					if password_Choice == 'tp':
-			# 						password = input("Enter Your Own Password\n")
-			# 						break
-			# 					elif password_Choice == 'gp':
-			# 						password = generate_password(password)
-			# 						break
-			# 		else:
-			# 			print("Invalid password please try again")
-			# 	save_credentials(create_new_credential(account,userName,password))
+	 if short_code == "3":	
+				  break	 
+				
 if __name__ == '__main__':
 	main()
 
