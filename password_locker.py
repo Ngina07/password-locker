@@ -2,6 +2,7 @@ import pyperclip
 from user import User
 from credentials import Credential
 import string
+import random
 
 def create_user(username,password):
 	'''
@@ -116,25 +117,98 @@ def main():
 
 					 if option == 'AD':
 						 while True:
-							 print ("Enter Account name")
-							 accountname = input()
-							 print ("Enter user name")
-							 accuser = input()
-							 print ( "Enter password")
-							 print("Would you like a computer generated password?(Y/N)")
-							 accpassword = input()
-							 if accpassword == "Y":
-								 accpassword = generate_password(password)
-								 print (" ")
-								 print (f"Account:{accountname} username: {accuser} password: {accpassword}")
-							 elif accpassword == "N":
-								 print ("Create password")
-								 accpassword = input ()
-								 print (f"Account:{accountname} username: {accuser} password: {accpassword}")
+							 print ("Continue to add account (Y-Yes/ N- No)")
+							 addacc = input()
+							 if addacc == "Y":
+								 
+								 print ("Enter Account name")
+								 accountname = input()
+								 print ("Enter user name")
+								 accuser = input()
+								 print ( "Enter password")
+								 print("Would you like a computer generated password?(Y/N)")
+								 accpassword = input()
+								 if accpassword == "Y":
+								 	 accpassword = random.randint(9, 30000)
+								 	 print (" ")
+								 	 print (f"Account:{accountname} username: {accuser} password: {accpassword}")
+								 elif accpassword == "N":
+								 	 print ("Create password")
+								 	 accpassword = input ()
+								 	 print (f"Account:{accountname} username: {accuser} password: {accpassword}")
+									#  print ("_" * 69 )	
+								 
+								 save_credential(create_credential(accountname, accuser, accpassword))
+							 elif addacc == "N":
+								 break
+							 else:
+								 print ("Invalid choice")
+					 elif option == "VW":
+						 while True:
+							#  print ("Here are your credentials:")
+							 if display_credentials (user_name):
+								 for credential in display_credentials(user_name):
+									 print ("Here are your credentials:")
+									 print (f"Account : {credential.account} username: {credential.userName} password: {credential.password}")
+
+									 print ("=" * 69 )
 
 							 else:
-								 print("Invalid choice")
-							 save_credential(create_credential(accountname, accuser, accpassword))	 
+								 print ("Your credential list is empty")
+								 
+							 print ("To go back to main menu - menu, to exit- Ex ")
+
+							 back = input()
+							 if back == "menu":
+								 break
+							 elif back == "Ex":
+								 continue
+							 else:
+								 print("Enter valid option!")
+
+					 elif option == "RM":
+						 print ("What account would you like to delete?")
+						 credname = input()
+						 if check_credentials(credname):
+							 deletecred = find_credentials(credname)
+							 print ("Are you sure you want to delete credential? (Y-Yes N-No)")
+							 delete = input()
+							 if delete == 'Y':
+								 delete_credentials(deletecred)
+								 print("Credential has been removed from list")
+								 break
+							 elif delete == 'N':
+								 continue
+						 else:
+							 print("Credential not found")
+
+					 elif option == "EX":
+						 print("Are you sure you want to leave password locker? Y-Yes/ N-No")
+
+						 leave = input ()
+						 if leave == "Y":
+							 print("Successfully exited!")
+							 break
+
+						 else:
+							 if leave == "N":
+								 continue
+						 	
+						 						 	  
+
+
+							 
+						
+
+
+
+
+
+
+
+
+
+							 	 
 							     
 
 
