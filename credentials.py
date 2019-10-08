@@ -70,30 +70,6 @@ class Credential:
 		'''
 		return cls.credentials_list
 
-	# def tearDown(self):
-	# 	'''
-	# 	'''
-	# 	Credential.credentials_list = []
-
-
-	# def find_credentials(self):
-	# 	'''
-	# 	'''
-	# 	self.new_crendetials.save_credentials()
-	
-
-
-
-	
-	# @classmethod
-	# def find_by_site_name(cls, site_name):
-	# 	'''
-	# 	Method that takes in a site_name and returns credentials that matches that site_name.
-	# 	'''
-	# 	for credential in cls.credentials_list:
-	# 		if credential.site_name == site_name:
-	# 			return credential
-
 	# @classmethod
 	# def copy_credential(cls,site_name):
 	# 	'''
@@ -102,13 +78,4 @@ class Credential:
 	# 	find_credential = Credential.find_by_site_name(site_name)
 	# 	return pyperclip.copy(find_credential.password)
 
-		# @classmethod
-	# def check_user(cls,firstname,password):
-	# 	'''
-	# 	Method that checks if the name and password entered match entries saved in the users_list
-	# 	'''
-	# 	current_user = ''
-	# 	for user in User.users_list:
-	# 		if (user.firstname == firstname and user.password == password):
-	# 			current_user = user.firstname
-	# 	return current_user
+

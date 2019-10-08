@@ -201,16 +201,11 @@ def main():
 			 print("Enter password")
 			 password1 = input()
 
-			 if username != user_name or password1 != password:
-				 print("Please enter correct account details!")
+			 verify = user_exist(username)
 
-				 continue
-			 else:
-				 print(f"Welcome to your password locker account {username}.")
-				 print(" ")
-				 print(" ")
-				
-
+			 if verify == True:
+				 print("Welcome to your password locker account!")
+			
 				 while True:
 					 print("\n AD- Add credential \n VW- View existing credentials \n RM- Delete credential \n EX- Exit application")
 					 
@@ -262,6 +257,7 @@ def main():
 							 back = input()
 							 if back == "menu":
 								 break
+								 
 							 elif back == "Ex":
 								 continue
 							 else:
@@ -290,10 +286,16 @@ def main():
 						 if leave == "Y":
 							 print("Successfully exited!")
 							 break
-
+				             
 						 else:
 							 if leave == "N":
 								 continue	  
+			 
+			 else:
+				 print(f"That username does not exist.Please create an account")
+				 print(" ")
+				 print(" ")
+				
 
 	 if short_code == "3":	
 				  break	 
