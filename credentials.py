@@ -1,5 +1,6 @@
 import pyperclip
 import string
+import random
 from user import User
 
 class Credential:
@@ -9,29 +10,16 @@ class Credential:
 	# Class Variables
 
 	credentials_list =[]
-	user_credentials_list = []
 
-	@classmethod
-	def check_user(cls,firstname,password):
-		'''
-		Method that checks if the name and password entered match entries saved in the users_list
-		'''
-		current_user = ''
-		for user in User.users_list:
-			if (user.firstname == firstname and user.password == password):
-				current_user = user.firstname
-		return current_user
-
-	def __init__(self,user_name,site_name,account_name,password):
+	def __init__(self,account,userName,password):
 
 		'''
 		Method to define the properties for each user object will hold.
 		'''
 
 		# instance variables
-		self.user_name = user_name
-		self.site_name = site_name
-		self.account_name = account_name
+		self.account = account
+		self.userName = userName
 		self.password = password
 
 	def save_credentials(self):
@@ -40,25 +28,61 @@ class Credential:
 		'''
 		# global users_list
 		Credential.credentials_list.append(self)
-	
-	# def generate_password(size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
-	# 	'''
-	# 	Method to generate an 8 character password for a user 
-	# 	'''
-	# 	user_password = ''.join(random.choice(char) for _ in range(size))
-	# 	return user_password
+
+	def delete_credential(self):
+		'''
+		Deletes credentials on user command
+		'''
+
+		self.credentials_list.remove(self)	
 
 	@classmethod
-	def display_credentials(cls,user_name):
+	def find_credentials(cls,account):
+		'''
+		Method that finds credentials from credentials_list
+		'''
+		for new in cls.credentials_list:
+			if new.account == account:
+				return new
+		
+	@classmethod
+	def credential_exists (cls,account):
+		'''
+		Method that checks if a credential exists in the credentials_List
+		'''
+		for exist in cls.credentials_list:
+			if exist.account == account:
+				return True
+		return False
+
+
+	def generate_password(self):
+		'''
+		Method to generate an 8 character password for a user 
+		'''
+		user_password = string.ascii_lowercase + string.ascii_lowercase + string.digits + "~!@#$%^&*"
+		return ''.join(random.choice(user_password) for _ in range(0,12))
+
+	@classmethod
+	def display_credentials(cls):
 		'''
 		Class method to display the list of credentials saved
 		'''
-		user_credentials_list = []
-		for credential in cls.credentials_list:
-			if credential.user_name == user_name:
-				user_credentials_list.append(credential)
-		return user_credentials_list
-				
+		return cls.credentials_list
+
+	# def tearDown(self):
+	# 	'''
+	# 	'''
+	# 	Credential.credentials_list = []
+
+
+	# def find_credentials(self):
+	# 	'''
+	# 	'''
+	# 	self.new_crendetials.save_credentials()
+	
+
+
 
 	
 	# @classmethod
@@ -77,3 +101,14 @@ class Credential:
 	# 	'''
 	# 	find_credential = Credential.find_by_site_name(site_name)
 	# 	return pyperclip.copy(find_credential.password)
+
+		# @classmethod
+	# def check_user(cls,firstname,password):
+	# 	'''
+	# 	Method that checks if the name and password entered match entries saved in the users_list
+	# 	'''
+	# 	current_user = ''
+	# 	for user in User.users_list:
+	# 		if (user.firstname == firstname and user.password == password):
+	# 			current_user = user.firstname
+	# 	return current_user
