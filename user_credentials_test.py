@@ -70,38 +70,12 @@ class TestCredentials(unittest.TestCase):
 
 	def test_delete_credentials(self):
 		'''
-		'''
-		self.new_crendetials.save_credentials()
+		Testing whether delete credentials method works
+		'''		
 		test_credentials = Credential('Google','Ngina','Ngish1234')
 		test_credentials.save_credentials()
-		test_credential.save_credentials()
-        
-		self.new_credential.delete_credentials()
+		test_credentials.save_credentials()
 		self.assertEqual(len(Credential.credentials_list),1)
-
-
-
-	# # def test_generate_password(self):
-	# # 	'''
-	# # 	Test to check if new password is being generated
-	# # 	'''
-	# # 	self.twitter = Credential ('Twitter', 'Harlem', '')
-	# # 	self.twitter.password = generate_password ()
-	# # 	self.assertEqual()
-
-	# def test_display_credentials(self):
-	# 	'''
-	# 	Test to check if credentials are displayed
-	# 	'''
-	# 	self.new_credential.save_credentials()
-	# 	twitter = Credential ('Phillis','Twitter', 'Philly', 'philly1234')
-	# 	twitter.save_credentials()
-	# 	self.assertEqual(len(Credential.display_credentials(twitter.user_name)),1)
-	
-	# def test_find_credentials(self):
-	# 	self.new_credential.save_credentials()
-	# 	test_credentials = Credential ('Phillis','Twitter', 'Philly', 'philly1234')
-	# 	test_credentials.save_credentials()
-
+        
 if __name__ == '__main__':
     unittest.main()
