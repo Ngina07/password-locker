@@ -67,12 +67,12 @@ def display_credentials(user_name):
 	'''
 	return Credential.display_credentials ()
 
-# def generate_password(self):
-# 	'''
-# 	Method to generate an 8 character password for a user 
-# 	'''
-# 	ge_password = Credential.generate_password()
-# 	return ge_password
+def generate_password(self):
+	'''
+	Method to generate an 8 character password for a user 
+	'''
+	ge_password = generate_password(self)
+	return ge_password
 
 			
 def main():
@@ -107,15 +107,38 @@ def main():
 				 print(f"Welcome to your password locker account {username}.")
 				 print(" ")
 				 print(" ")
-				 print("\n AD- Add credential \n VW- View existing credentials \n RM- Delete credential \n  EX- Exit application")
-			
+				
+
+				 while True:
+					 print("\n AD- Add credential \n VW- View existing credentials \n RM- Delete credential \n EX- Exit application")
+					 
+					 option = input()
+
+					 if option == 'AD':
+						 while True:
+							 print ("Enter Account name")
+							 accountname = input()
+							 print ("Enter user name")
+							 accuser = input()
+							 print ( "Enter password")
+							 print("Would you like a computer generated password?(Y/N)")
+							 accpassword = input()
+							 if accpassword == "Y":
+								 accpassword = generate_password(password)
+								 print (" ")
+								 print (f"Account:{accountname} username: {accuser} password: {accpassword}")
+							 elif accpassword == "N":
+								 print ("Create password")
+								 accpassword = input ()
+								 print (f"Account:{accountname} username: {accuser} password: {accpassword}")
+
+							 else:
+								 print("Invalid choice")
+							 save_credential(create_credential(accountname, accuser, accpassword))	 
+							     
 
 
 
-	
-
-
-	 
 			# print('******Hey there, welcome to password locker***** I would like to: \n 1-Create an Account \n 2-Log In \n 3-Exit')
 			# short_code = input().lower().strip()
 			# if short_code == "1":
